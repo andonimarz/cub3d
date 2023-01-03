@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 09:38:45 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:47:31 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,31 @@ void	mlx_place_pixel(t_data *data, int x, int y, int color)
 
 void	fill_floor(t_control *control)
 {
-	int	y;
 	int	x;
+	int	y;
 
-	y = 0;
-	while (y < control->width)
+	x = 0;
+	while (x < control->width)
 	{
-		x = control->height / 2 - 1;
-		while (++x < control->height)
-			mlx_place_pixel(control->data, y, x, control->floor);
-		y++;
+		y = control->height / 2 - 1;
+		while (++y < control->height)
+			mlx_place_pixel(control->data, x, y, control->floor);
+		x++;
 	}
 }
 
 void	fill_ceiling(t_control *control)
 {
-	int	y;
 	int	x;
+	int	y;
 
-	y = 0;
-	while (y < control->width)
+	x = 0;
+	while (x < control->width)
 	{
-		x = -1;
-		while (++x < control->height / 2)
-			mlx_place_pixel(control->data, y, x, control->ceiling);
-		y++;
+		y = -1;
+		while (++y < control->height / 2)
+			mlx_place_pixel(control->data, x, y, control->ceiling);
+		x++;
 	}
 }
 
