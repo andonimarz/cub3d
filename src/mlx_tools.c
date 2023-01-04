@@ -6,13 +6,14 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/03 09:57:31 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:56:36 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/struct.h"
 #include "../include/mlx_tools.h"
 #include "../minilibx/mlx.h"
+#include <stdio.h>
 
 void	mlx_place_pixel(t_data *data, int x, int y, int color)
 {
@@ -46,6 +47,19 @@ void	fill_background(t_control *control)
 	}
 }
 
+void	draw_line(t_control *ctr, int x)
+{
+	int	y;
+
+	y = ctr->drawstart;
+	printf("Color: %lu, Draw start:%d, draw end: %d\n", ctr->color, ctr->drawstart, ctr->drawend);
+	while (y < ctr->drawend)
+	{
+		mlx_place_pixel(ctr->data, x, y, ctr->color);
+		y++;
+	}
+}
+
 void	ft_mlx(t_control *ctr)
 {
 	t_data	data;
@@ -59,6 +73,7 @@ void	ft_mlx(t_control *ctr)
 	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
 	&ctr->data->bits_per_pixel, &ctr->data->line_length, &ctr->data->endian);
 	fill_background(ctr);
+	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
 	mlx_loop(ctr->data->mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:32:13 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/04 12:14:20 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:14:30 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_control
 	unsigned long		white;
 	unsigned long		green;
 	unsigned long		black;
+	unsigned long		color;
 	double				pos_x;			//Player start position
 	double				pos_y;			//Player start position
 	double				dir_x;			//Player direction
