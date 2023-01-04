@@ -81,10 +81,10 @@ int main(int /*argc*/, char */*argv*/[])
   screen(screenWidth, screenHeight, 0, "Raycaster");
   while(!done())
   {
-    for(int x = 0; x < w; x++)
+    for(int x = 0; x < screenWidth; x++)
     {
       //calculate ray position and direction
-      double cameraX = 2 * x / (double)w - 1; //x-coordinate in camera space
+      double cameraX = 2 * x / (double)screenWidth - 1; //x-coordinate in camera space
       double rayDirX = dirX + planeX * cameraX;
       double rayDirY = dirY + planeY * cameraX;
       //which box of the map we're in

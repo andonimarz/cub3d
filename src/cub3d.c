@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 09:51:40 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:16:06 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ void	fill_control(t_control *control)
 	control->width = screenWidth;
 	control->ceiling = 0x0000ff;
 	control->floor = 0xff0000;
+	control->black = 0x000000;
+	control->white = 0xffffff;
+	control->green = 0x00ff00;
 }
 
 int	main(void)
