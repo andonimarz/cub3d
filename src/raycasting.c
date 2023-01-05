@@ -6,16 +6,17 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/04 13:56:04 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:41:05 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/struct.h"
 #include "../include/mlx_tools.h"
+#include "../include/cub3d.h"
 #include <math.h>
 #include <stdio.h>
 
-//mapa de prueba en cub3d.c
+//mapa de prueba
 int	worldMap[24][24]=
 {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -148,6 +149,16 @@ void	get_color(t_control *ctr)
 		ctr->color = ctr->color / 2;
 }
 
+void	calculate_frametime(t_control *ctr)
+{
+	ctr->old_time = ctr->time;
+	ctr->time = ft_get_time();
+	ctr->frametime = (ctr->time - ctr->old_time) / 1000.0;
+	printf("FPS COUNTER: %f\n", 1.0 / ctr->frametime);
+	ctr->movespeed = ctr->frametime * 5.0;
+	ctr->rotspeed = ctr->frametime * 3.0;
+}
+
 void	ray_loop(t_control *ctr)
 {
 	int	x;
@@ -165,6 +176,7 @@ void	ray_loop(t_control *ctr)
 		draw_line(ctr, x);
 		x++;
 	}
+	calculate_frametime(ctr);
 }
 
 /* while (x < SCREEN_WIDTH)

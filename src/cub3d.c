@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 13:55:22 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:26:37 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 #include "../include/struct.h"
 #include "../include/mlx_tools.h"
 #include "../minilibx/mlx.h"
+#include <sys/time.h>
 
 #define screenWidth 640
 #define screenHeight 480
 #define mapWidth 24
 #define mapHeight 24
+
+long	ft_get_time(void)
+{
+	struct timeval	time;
+	long			ms;
+
+	gettimeofday(&time, NULL);
+	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (ms);
+}
 
 void	fill_control(t_control *control)
 {
@@ -36,6 +47,9 @@ void	fill_control(t_control *control)
 	control->dir_y = 0;
 	control->plane_x = 0;
 	control->plane_y = 0.66;
+	control->time = ft_get_time();
+	control->old_time = 0;
+	control->frametime = 0;
 }
 
 int	main(void)

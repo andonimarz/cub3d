@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:32:13 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/04 13:14:30 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/05 09:14:28 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ typedef struct s_data
 
 typedef struct s_control
 {
-	char				**map;
-	char				*str;
-	int					error;
-	int					fd;
 	int					height;
 	int					width;
 	unsigned long		ceiling;
@@ -64,6 +60,9 @@ typedef struct s_control
 	int					lineheight;		//The height of line to draw
 	int					drawstart;		//The lowest pixel to draw
 	int					drawend;		//The highest pixel to draw
+	double				frametime;
+	double				movespeed;
+	double				rotspeed;
 	t_data				*data;
 
 }					t_control;
