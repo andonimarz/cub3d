@@ -6,12 +6,10 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/05 10:41:05 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:25:13 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/struct.h"
-#include "../include/mlx_tools.h"
 #include "../include/cub3d.h"
 #include <math.h>
 #include <stdio.h>
@@ -178,19 +176,3 @@ void	ray_loop(t_control *ctr)
 	}
 	calculate_frametime(ctr);
 }
-
-/* while (x < SCREEN_WIDTH)
-{
-	calculate_ray_position_and_direction(x);
-	set_box_position();
-	calculate_delta_distance();
-	calculate_step_and_side_distance_x();
-	calculate_step_and_side_distance_y();
-	dda();
-	calculate_distance_perspective();
-	calculate_vertical_line_height();
-	calculate_draw_start_and_draw_end();
-	calculate_texture_x();
-	draw_vertical_texture_stripe(x);
-	x++;
-} */

@@ -6,7 +6,7 @@
 #    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/04 13:33:36 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/08 12:25:36 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = cub3d
 SRC = 	src/cub3d.c \
 		src/checkers.c \
 		src/mlx_tools.c \
-		src/raycasting.c
+		src/raycasting.c \
+		src/moves.c
 
 CC = gcc
 INCLUDES = -I include -I libft -I minilibx/mlx.h

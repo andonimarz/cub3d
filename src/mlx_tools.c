@@ -6,44 +6,17 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/05 10:41:33 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:24:54 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/struct.h"
-#include "../include/mlx_tools.h"
+#include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-//mapa de prueba
-/* int	worldMap[24][24]=
-{
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,4,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-}; */
+extern int worldMap[24][24];
 
 void	mlx_place_pixel(t_data *data, int x, int y, int color)
 {
@@ -82,7 +55,6 @@ void	draw_line(t_control *ctr, int x)
 	int	y;
 
 	y = ctr->drawstart;
-	//printf("Color: %lu, Draw start:%d, draw end: %d\n", ctr->color, ctr->drawstart, ctr->drawend);
 	while (y < ctr->drawend)
 	{
 		mlx_place_pixel(ctr->data, x, y, ctr->color);
@@ -90,35 +62,32 @@ void	draw_line(t_control *ctr, int x)
 	}
 }
 
-//WORK IN PROGRESS
-/* void	ft_inputs(int key, t_control *ctr)
+//WORK IN PROGRESS. falta un exit sin leaks
+int	ft_inputs(int key, t_control *ctr)
 {
-	int		move;
+	int	move;
 
+	printf("%d\n", key);
 	move = 0;
 	if (key == 53)
-		ft_exit(ctr);
-	if (key == 0)
-		if (worldMap[(int)(ctr->pos_x + ctr->dir_x * ctr->movespeed)]\
-		[(int)(ctr->pos_y)] == false)
-			ctr->pos_x += ctr->dir_x * ctr->movespeed;
-    	if (worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false)
-			posY += dirY * moveSpeed;
-	if (key == 2)
-		move = ft_updown(ctr, key);
-	if (key == 13)
-		move = ft_leftright(ctr, key);
-	if (key == 1)
-		move = ft_leftright(ctr, key);
+		exit(0);
+	if (key == 13 || key == 1)
+		move = move_ws(ctr, key);
+	if (key == 0 || key == 2)
+		move = move_ad(ctr, key);
+	if (key == 123)
+		move = rotate_l(ctr);
+	if (key == 124)
+		move = rotate_r(ctr);
 	if (move)
 	{
-		ft_fill_map(ctr);
-		ft_putstr_fd("Steps: ", 1);
-		ft_putstr_fd(ft_itoa(ctr->data->moves_count), 1);
-		ft_putchar_fd('\n', 1);
+		fill_background(ctr);
+		ray_loop(ctr);
+		mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
+			ctr->data->img, 0, 0);
 	}
-	return (1);
-} */
+	return (0);
+}
 
 void	ft_mlx(t_control *ctr)
 {
@@ -136,8 +105,9 @@ void	ft_mlx(t_control *ctr)
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
-	//mlx_key_hook(ctr->data->mlx_win, &ft_inputs, ctr);
+	mlx_key_hook(ctr->data->mlx_win, &ft_inputs, ctr);
 	mlx_hook(ctr->data->mlx_win, 17, 0, (void *)exit, 0);
+	printf("LOOP\n");
 	mlx_loop(ctr->data->mlx_ptr);
 }
 
