@@ -6,13 +6,13 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/08 12:22:57 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:29:15 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
-#include "../include/struct.h"
+#include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
 #include <sys/time.h>
 

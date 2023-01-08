@@ -6,11 +6,10 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:06:11 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/08 12:25:55 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:29:29 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/struct.h"
 #include "../include/cub3d.h"
 #include <math.h>
 
