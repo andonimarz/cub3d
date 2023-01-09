@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/09 10:41:42 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:51:05 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,9 @@ void	get_color(t_control *ctr)
 	if (worldMap[ctr->map_x][ctr->map_y] == 2)
 		ctr->color = ctr->green;
 	if (worldMap[ctr->map_x][ctr->map_y] == 3)
-		ctr->color = ctr->black;
+		ctr->color =  0xffd700;
 	if (worldMap[ctr->map_x][ctr->map_y] == 4)
-		ctr->color = 0x00ffff;
+		ctr->color = 0x4b0082;
 	if (ctr->side == 1)
 		ctr->color = ctr->color / 2;
 }
@@ -152,8 +152,6 @@ void	calculate_frametime(t_control *ctr)
 		ctr->frametime = 0.017;
 	ctr->movespeed = ctr->frametime * 5.0;
 	ctr->rotspeed = ctr->frametime * 3.0;
-	//printf("FRAMETIME: %f\n", ctr->frametime);
-	//printf("FPS COUNTER: %f\n", 1.0 / ctr->frametime);
 }
 
 void	ray_loop(t_control *ctr)
@@ -169,6 +167,7 @@ void	ray_loop(t_control *ctr)
 		dda_algorithm(ctr);
 		calculate_dist_draw(ctr);
 		get_color(ctr);
+		//load_textures(ctr);
 		draw_line(ctr, x);
 		x++;
 	}

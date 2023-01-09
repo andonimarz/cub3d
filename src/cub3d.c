@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/09 09:34:05 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:43:33 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	fill_control(t_control *control)
 	control->time = ft_get_time();
 	control->old_time = 0;
 	control->frametime = 0;
+	control->texheight = 64;
+	control->texwidth = 64;
 }
 
 int	main(void)

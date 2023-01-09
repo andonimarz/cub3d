@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/09 09:30:58 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:39:04 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct s_control
 	double				rotspeed;
 	t_data				*data;
 	t_key				*key;
+	int					*textures[4];
+	int					texwidth;
+	int					texheight;
 
 }					t_control;
 
@@ -113,5 +116,9 @@ int		rotate_l(t_control *img);
 int		ft_inputs(t_control *ctr);
 int		key_press(int key, t_control *ctr);
 int		key_release(int key, t_control *ctr);
+
+//textures.c
+
+void	load_textures(t_control *ctr);
 
 #endif
