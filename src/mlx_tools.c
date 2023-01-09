@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/09 09:40:12 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 09:51:25 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	ft_mlx(t_control *ctr)
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
 	//mlx_destroy_image(ctr->data->mlx_ptr, ctr->data->img);
-	//mlx_key_hook(ctr->data->mlx_win, &ft_inputs, ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
 	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);

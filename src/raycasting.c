@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/09 08:33:55 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:41:42 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,12 @@ void	calculate_frametime(t_control *ctr)
 	ctr->old_time = ctr->time;
 	ctr->time = ft_get_time();
 	ctr->frametime = (ctr->time - ctr->old_time) / 1000.0;
-	printf("FPS COUNTER: %f\n", 1.0 / ctr->frametime);
+	if (ctr->frametime > 0.05)
+		ctr->frametime = 0.017;
 	ctr->movespeed = ctr->frametime * 5.0;
 	ctr->rotspeed = ctr->frametime * 3.0;
+	//printf("FRAMETIME: %f\n", ctr->frametime);
+	//printf("FPS COUNTER: %f\n", 1.0 / ctr->frametime);
 }
 
 void	ray_loop(t_control *ctr)
