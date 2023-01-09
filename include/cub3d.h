@@ -6,12 +6,17 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/08 12:28:54 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 09:30:58 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define ESC 			53
+# define KEY_PRESS		2
+# define KEY_RELEASE	3
+# define EXIT			17
 
 typedef struct s_data
 {
@@ -24,6 +29,16 @@ typedef struct s_data
 	int			endian;
 
 }				t_data;
+
+typedef struct s_key
+{
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			l;
+	int			r;
+}				t_key;
 
 typedef struct s_control
 {
@@ -64,6 +79,7 @@ typedef struct s_control
 	double				movespeed;
 	double				rotspeed;
 	t_data				*data;
+	t_key				*key;
 
 }					t_control;
 
@@ -91,5 +107,11 @@ int		move_ws(t_control *ctr, int key);
 int		move_ad(t_control *ctr, int key);
 int		rotate_r(t_control *img);
 int		rotate_l(t_control *img);
+
+//hooks.c
+
+int		ft_inputs(t_control *ctr);
+int		key_press(int key, t_control *ctr);
+int		key_release(int key, t_control *ctr);
 
 #endif

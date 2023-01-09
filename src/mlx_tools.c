@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/08 12:24:54 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 09:40:12 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,37 +62,23 @@ void	draw_line(t_control *ctr, int x)
 	}
 }
 
-//WORK IN PROGRESS. falta un exit sin leaks
-int	ft_inputs(int key, t_control *ctr)
+void	init_key(t_key *key)
 {
-	int	move;
-
-	printf("%d\n", key);
-	move = 0;
-	if (key == 53)
-		exit(0);
-	if (key == 13 || key == 1)
-		move = move_ws(ctr, key);
-	if (key == 0 || key == 2)
-		move = move_ad(ctr, key);
-	if (key == 123)
-		move = rotate_l(ctr);
-	if (key == 124)
-		move = rotate_r(ctr);
-	if (move)
-	{
-		fill_background(ctr);
-		ray_loop(ctr);
-		mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
-			ctr->data->img, 0, 0);
-	}
-	return (0);
+	key->w = 0;
+	key->a = 0;
+	key->s = 0;
+	key->d = 0;
+	key->l = 0;
+	key->r = 0;
 }
 
 void	ft_mlx(t_control *ctr)
 {
 	t_data	data;
+	t_key	key;
 
+	ctr->key = &key;
+	init_key(&key);
 	ctr->data = &data;
 	ctr->data->mlx_ptr = mlx_init();
 	ctr->data->mlx_win = mlx_new_window(ctr->data->mlx_ptr, \
@@ -105,9 +91,12 @@ void	ft_mlx(t_control *ctr)
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
-	mlx_key_hook(ctr->data->mlx_win, &ft_inputs, ctr);
-	mlx_hook(ctr->data->mlx_win, 17, 0, (void *)exit, 0);
-	printf("LOOP\n");
+	//mlx_destroy_image(ctr->data->mlx_ptr, ctr->data->img);
+	//mlx_key_hook(ctr->data->mlx_win, &ft_inputs, ctr);
+	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
+	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
+	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);
+	mlx_loop_hook(ctr->data->mlx_ptr, &ft_inputs, ctr);
 	mlx_loop(ctr->data->mlx_ptr);
 }
 

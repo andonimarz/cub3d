@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/08 12:29:32 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/09 08:33:55 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,14 @@ int	worldMap[24][24]=
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-void	calculate_ray(int x, t_control *ctr)
-{
-	ctr->camera_x = 2 * x / (double) ctr->width - 1;
-	ctr->raydir_x = ctr->dir_x + ctr->plane_x * ctr->camera_x;
-	ctr->raydir_y = ctr->dir_y + ctr->plane_y * ctr->camera_x;
-}
-
-void	init_position(t_control *ctr)
+void	init_pos_calculate_ray(int x, t_control *ctr)
 {
 	ctr->map_x = ctr->pos_x;
 	ctr->map_y = ctr->pos_y;
 	ctr->hit = 0;
+	ctr->camera_x = 2 * x / (double) ctr->width - 1;
+	ctr->raydir_x = ctr->dir_x + ctr->plane_x * ctr->camera_x;
+	ctr->raydir_y = ctr->dir_y + ctr->plane_y * ctr->camera_x;
 }
 
 void	get_deltadist(t_control *ctr)
@@ -164,8 +160,7 @@ void	ray_loop(t_control *ctr)
 	x = 0;
 	while (x < ctr->width)
 	{
-		calculate_ray(x, ctr);
-		init_position(ctr);
+		init_pos_calculate_ray(x, ctr);
 		get_deltadist(ctr);
 		get_step_sidedist(ctr);
 		dda_algorithm(ctr);
