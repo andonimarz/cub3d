@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks and loops.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:32:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 09:00:32 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:30:06 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,40 @@ int	key_release(int key, t_control *ctr)
 	return (0);
 }
 
-int	ft_inputs(t_control *ctr)
+void	calculate_frametime(t_control *ctr)
+{
+	ctr->old_time = ctr->time;
+	ctr->time = ft_get_time();
+	ctr->frametime = (ctr->time - ctr->old_time) / 1000.0;
+	if (ctr->frametime > 0.05)
+		ctr->frametime = 0.017;
+	ctr->movespeed = ctr->frametime * 5.0;
+	ctr->rotspeed = ctr->frametime * 3.0;
+}
+
+void	ray_loop(t_control *ctr)
+{
+	int	x;
+
+	x = 0;
+	while (x < ctr->width)
+	{
+		init_pos_calculate_ray(x, ctr);
+		get_deltadist(ctr);
+		get_step_sidedist(ctr);
+		dda_algorithm(ctr);
+		calculate_dist_draw(ctr);
+		get_tex_num(ctr);
+		get_tex_color(ctr);
+		fill_buffer(ctr, x);
+		draw_tex_line(ctr, x);
+		x++;
+	}
+	calculate_frametime(ctr);
+	clear_buffer(ctr);
+}
+
+int	hook_loop(t_control *ctr)
 {
 	int	move;
 

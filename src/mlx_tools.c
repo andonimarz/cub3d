@@ -6,17 +6,27 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 13:26:17 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:30:21 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 extern int worldMap[24][24];
+
+void	draw_tex_line(t_control *ctr, int x)
+{
+	int	y;
+
+	y = ctr->drawstart;
+	while (y < ctr->drawend)
+	{
+		mlx_place_pixel(ctr->data, x, y, ctr->buffer[y][x]);
+		y++;
+	}
+}
 
 void	mlx_place_pixel(t_data *data, int x, int y, int color)
 {
@@ -49,18 +59,6 @@ void	fill_background(t_control *control)
 		x++;
 	}
 }
-
-/* void	draw_line(t_control *ctr, int x)
-{
-	int	y;
-
-	y = ctr->drawstart;
-	while (y < ctr->drawend)
-	{
-		mlx_place_pixel(ctr->data, x, y, ctr->color);
-		y++;
-	}
-} */
 
 void	init_key(t_key *key)
 {
@@ -96,7 +94,7 @@ void	ft_mlx(t_control *ctr)
 	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
 	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);
-	mlx_loop_hook(ctr->data->mlx_ptr, &ft_inputs, ctr);
+	mlx_loop_hook(ctr->data->mlx_ptr, &hook_loop, ctr);
 	mlx_loop(ctr->data->mlx_ptr);
 }
 

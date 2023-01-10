@@ -6,22 +6,22 @@
 #    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/10 09:09:50 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/10 15:38:47 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-SRC = 	src/cub3d.c 		\
-		src/checkers.c 		\
-		src/mlx_tools.c 	\
-		src/raycasting.c 	\
-		src/moves.c			\
-		src/hooks.c			\
+SRC = 	src/cub3d.c 					\
+		src/mlx_tools.c 				\
+		src/raycasting.c 				\
+		src/raycasting_tex.c			\
+		src/moves.c						\
+		src/hooks_and_loops.c			\
 		src/textures.c
 
 CC = gcc
 INCLUDES = -I include -I libft -I minilibx/mlx.h
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) #-fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address -g3
 LINKS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 
 .SILENT:

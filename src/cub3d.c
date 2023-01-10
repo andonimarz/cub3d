@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 13:44:47 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:04:48 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,10 @@ void	fill_control(t_control *control)
 		control->texture[i] = malloc(sizeof(int) * 64 * 64);
 }
 
-/* void	generate_textures(t_control *ctr)
-{
-	int	x;
-	int	y;
-	int	xorcolor;
-
-	x = -1;
-	while (++x < 64)
-	{
-		y = -1;
-		while (++y < 64)
-		{
-			xorcolor = (x * 256 / 64) ^ (y * 256 / 64);
-			ctr->texture[0][64 * y + x] = 65536 * 192 * (x % 16 && y % 16);
-			ctr->texture[1][64 * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor;
-			ctr->texture[2][64 * y + x] = 256 * xorcolor;
-			ctr->texture[3][64 * y + x] = 65536 * 254 * (x != y && x != 64 - y);
-		}
-	}
-} */
-
 int	main(void)
 {
 	t_control	control;
 
 	fill_control(&control);
-	//generate_textures(&control);
 	ft_mlx(&control);
 }

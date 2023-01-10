@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 13:12:58 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:37:37 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,23 @@ typedef struct s_control
 	int					tex_color;
 }					t_control;
 
-int		arg_checker(int ac, char **av);
-int		ft_checkfile(const char *file);
-
 //cub3d.c
 
 long	ft_get_time(void);
 
-//raycasting.c
+//hooks_and_loops.c
 
 void	ray_loop(t_control *ctr);
+int		hook_loop(t_control *ctr);
+int		key_press(int key, t_control *ctr);
+int		key_release(int key, t_control *ctr);
 
 //mlx_tools.c
 
+void	draw_tex_line(t_control *ctr, int x);
 void	mlx_place_pixel(t_data *data, int x, int y, int color);
 void	fill_background(t_control *control);
 void	ft_mlx(t_control *ctr);
-void	draw_line(t_control *ctr, int x);
 
 //moves.c
 
@@ -119,11 +119,20 @@ int		move_ad(t_control *ctr, int key);
 int		rotate_r(t_control *img);
 int		rotate_l(t_control *img);
 
-//hooks.c
+//raycasting_tex.c
+void	get_tex_num(t_control *ctr);
+void	get_tex_color(t_control *ctr);
+void	fill_buffer(t_control *ctr, int x);
+void	clear_buffer(t_control *ctr);
+void	calculate_frametime(t_control *ctr);
 
-int		ft_inputs(t_control *ctr);
-int		key_press(int key, t_control *ctr);
-int		key_release(int key, t_control *ctr);
+//raycasting.c
+
+void	init_pos_calculate_ray(int x, t_control *ctr);
+void	get_deltadist(t_control *ctr);
+void	get_step_sidedist(t_control *ctr);
+void	dda_algorithm(t_control *ctr);
+void	calculate_dist_draw(t_control *ctr);
 
 //textures.c
 
