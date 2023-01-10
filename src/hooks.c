@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:32:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/09 09:40:32 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 09:00:32 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	ft_inputs(t_control *ctr)
 		ray_loop(ctr);
 		mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 			ctr->data->img, 0, 0);
-		//mlx_destroy_image(ctr->data->mlx_ptr, ctr->data->img);
 	}
 	return (0);
 }

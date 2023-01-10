@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/09 13:48:13 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:46:30 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	fill_background(t_control *control)
 	}
 }
 
-void	draw_line(t_control *ctr, int x)
+/* void	draw_line(t_control *ctr, int x)
 {
 	int	y;
 
@@ -60,7 +60,7 @@ void	draw_line(t_control *ctr, int x)
 		mlx_place_pixel(ctr->data, x, y, ctr->color);
 		y++;
 	}
-}
+} */
 
 void	init_key(t_key *key)
 {
@@ -88,10 +88,10 @@ void	ft_mlx(t_control *ctr)
 	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
 	&ctr->data->bits_per_pixel, &ctr->data->line_length, &ctr->data->endian);
 	fill_background(ctr);
+	//load_textures(ctr);
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
-	//mlx_destroy_image(ctr->data->mlx_ptr, ctr->data->img);
 	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
 	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);
