@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 11:46:30 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:14:56 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void	ft_mlx(t_control *ctr)
 	ctr->data->mlx_ptr = mlx_init();
 	ctr->data->mlx_win = mlx_new_window(ctr->data->mlx_ptr, \
 		ctr->width, ctr->height, "cub3d");
+	load_textures(ctr);
 	ctr->data->img = mlx_new_image(ctr->data->mlx_ptr, ctr->width, \
 		ctr->height);
 	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
-	&ctr->data->bits_per_pixel, &ctr->data->line_length, &ctr->data->endian);
+		&ctr->data->bits_per_pixel, &ctr->data->line_length, &ctr->data->endian);
 	fill_background(ctr);
-	//load_textures(ctr);
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);

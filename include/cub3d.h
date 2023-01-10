@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 11:39:47 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:12:58 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_control
 	int					texh;
 	int					buffer[480][640];
 	int					*texture[4];
+	int					*tex[4];
 	int					tex_num;		//value of the current map square minus 1
 	double				wallx;			//exact value where the wall was hit
 	int					tex_x;			//x coordinate on the texture 
@@ -126,6 +127,6 @@ int		key_release(int key, t_control *ctr);
 
 //textures.c
 
-//void	load_textures(t_control *ctr);
+void	load_textures(t_control *ctr);
 
 #endif
