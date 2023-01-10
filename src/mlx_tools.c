@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 13:14:56 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:26:17 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	ft_mlx(t_control *ctr)
 	ctr->data->img = mlx_new_image(ctr->data->mlx_ptr, ctr->width, \
 		ctr->height);
 	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
-		&ctr->data->bits_per_pixel, &ctr->data->line_length, &ctr->data->endian);
+		&ctr->data->bits_per_pixel, &ctr->data->line_length, \
+		&ctr->data->endian);
 	fill_background(ctr);
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \

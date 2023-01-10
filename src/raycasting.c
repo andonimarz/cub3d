@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 12:06:28 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:54:29 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,25 +154,44 @@ void	calculate_frametime(t_control *ctr)
 	ctr->rotspeed = ctr->frametime * 3.0;
 }
 
+void	get_tex_num(t_control *ctr)
+{
+	if (ctr->side == 0)
+	{
+		if (ctr->raydir_x >= 0)
+			ctr->tex_num = 0;
+		else
+			ctr->tex_num = 1;
+	}
+	else
+	{
+		if (ctr->raydir_y >= 0)
+			ctr->tex_num = 2;
+		else
+			ctr->tex_num = 3;
+	}
+}
+
 //Texturing calculations
 
 void	get_tex_color(t_control *ctr, int x)
 {
 	int	y;
 
-	ctr->tex_num = worldMap[ctr->map_x][ctr->map_y] - 1;
+	//ctr->tex_num = worldMap[ctr->map_x][ctr->map_y] - 1;
+	get_tex_num(ctr);
 	if (ctr->side == 0)		//calculate value of wallX
 		ctr->wallx = ctr->pos_y + ctr->perpwalldist * ctr->raydir_y;
 	else
 		ctr->wallx = ctr->pos_x + ctr->perpwalldist * ctr->raydir_x;
 	ctr->wallx -= floor(ctr->wallx);
-	ctr->tex_x = (int)(ctr->wallx * 64);
+	ctr->tex_x = (int)(ctr->wallx * (double)ctr->texw);
 	if (ctr->side == 0 && ctr->raydir_x > 0)	//x coordinate on the texture
-		ctr->tex_x = 64 - ctr->tex_x - 1;
+		ctr->tex_x = ctr->texw - ctr->tex_x - 1;
 	if (ctr->side == 1 && ctr->raydir_x < 0)
-		ctr->tex_x = 64 - ctr->tex_x - 1;
-	ctr->step = 1.0 * 64 / ctr->lineheight;
-	ctr->tex_pos = (ctr->drawstart - ctr->height / 2 + ctr->lineheight / 2 * ctr->step);
+		ctr->tex_x = ctr->texw - ctr->tex_x - 1;
+	ctr->step = 1.0 * ctr->texh / ctr->lineheight;
+	ctr->tex_pos = (ctr->drawstart - ctr->height / 2 + ctr->lineheight / 2) * ctr->step;
 	y = ctr->drawstart;
 	while (y < ctr->drawend)
 	{
