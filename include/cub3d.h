@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 13:10:50 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:44:48 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define KEY_PRESS		2
 # define KEY_RELEASE	3
 # define EXIT			17
+# define SCREENWIDTH	640
+# define SCREENHEIGHT	480
 
 typedef struct s_data
 {
@@ -100,12 +102,9 @@ typedef struct s_control
 }					t_control;
 
 //cub3d.c
-
 long	ft_get_time(void);
-void	init_control(t_control *control);
 
 //hooks_and_loops.c
-
 int		key_press(int key, t_control *ctr);
 int		key_release(int key, t_control *ctr);
 void	calculate_frametime(t_control *ctr);
@@ -113,15 +112,12 @@ void	ray_loop(t_control *ctr);
 int		hook_loop(t_control *ctr);
 
 //mlx_tools.c
-
 void	draw_tex_line(t_control *ctr, int x);
 void	mlx_place_pixel(t_data *data, int x, int y, int color);
 void	fill_background(t_control *control);
-void	init_key(t_key *key);
 void	ft_mlx(t_control *ctr);
 
 //moves.c
-
 int		move_ws(t_control *ctr, int key);
 int		move_ad(t_control *ctr, int key);
 int		rotate_r(t_control *img);
@@ -134,7 +130,6 @@ void	fill_buffer(t_control *ctr, int x);
 void	clear_buffer(t_control *ctr);
 
 //raycasting.c
-
 void	init_pos_calculate_ray(int x, t_control *ctr);
 void	get_deltadist(t_control *ctr);
 void	get_step_sidedist(t_control *ctr);
@@ -142,8 +137,11 @@ void	dda_algorithm(t_control *ctr);
 void	calculate_dist_draw(t_control *ctr);
 
 //textures.c
-
 void	load_textures(t_control *ctr);
 // void	destroy_textures(t_control *ctr)
+
+//utils.c
+void	init_control(t_control *control);
+void	init_key(t_key *key);
 
 #endif

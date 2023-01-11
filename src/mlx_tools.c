@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 13:11:52 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:45:24 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,20 @@ void	fill_background(t_control *control)
 	}
 }
 
-void	init_key(t_key *key)
+void	init_screen(t_control *ctr)
 {
-	key->w = 0;
-	key->a = 0;
-	key->s = 0;
-	key->d = 0;
-	key->l = 0;
-	key->r = 0;
+	ctr->data->mlx_win = mlx_new_window(ctr->data->mlx_ptr, \
+		ctr->width, ctr->height, "cub3d");
+	load_textures(ctr);
+	ctr->data->img = mlx_new_image(ctr->data->mlx_ptr, ctr->width, \
+		ctr->height);
+	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
+		&ctr->data->bits_per_pixel, &ctr->data->line_length, \
+		&ctr->data->endian);
+	fill_background(ctr);
+	ray_loop(ctr);
+	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
+		ctr->data->img, 0, 0);
 }
 
 void	ft_mlx(t_control *ctr)
@@ -83,18 +89,7 @@ void	ft_mlx(t_control *ctr)
 	ctr->tex = &tex;
 	ctr->ray = &ray;
 	ctr->data->mlx_ptr = mlx_init();
-	ctr->data->mlx_win = mlx_new_window(ctr->data->mlx_ptr, \
-		ctr->width, ctr->height, "cub3d");
-	load_textures(ctr);
-	ctr->data->img = mlx_new_image(ctr->data->mlx_ptr, ctr->width, \
-		ctr->height);
-	ctr->data->img_addr = mlx_get_data_addr(ctr->data->img, \
-		&ctr->data->bits_per_pixel, &ctr->data->line_length, \
-		&ctr->data->endian);
-	fill_background(ctr);
-	ray_loop(ctr);
-	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
-		ctr->data->img, 0, 0);
+	init_screen(ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
 	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
 	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);

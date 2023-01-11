@@ -6,7 +6,7 @@
 #    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/10 15:38:47 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/11 13:28:18 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC = 	src/cub3d.c 					\
 		src/raycasting_tex.c			\
 		src/moves.c						\
 		src/hooks_and_loops.c			\
-		src/textures.c
+		src/textures.c					\
+		src/utils.c
 
 CC = gcc
 INCLUDES = -I include -I libft -I minilibx/mlx.h
