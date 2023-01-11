@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 12:00:30 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:42:37 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,17 @@ typedef struct s_key
 	int			r;
 }				t_key;
 
+typedef struct s_tex
+{
+
+}				t_tex;
+
 typedef struct s_control
 {
 	int					height;
 	int					width;
 	unsigned long		ceiling;
 	unsigned long		floor;
-	unsigned long		white;
-	unsigned long		green;
-	unsigned long		black;
-	unsigned long		color;
 	double				pos_x;			//Player start position
 	double				pos_y;			//Player start position
 	double				dir_x;			//Player direction
@@ -80,6 +81,7 @@ typedef struct s_control
 	double				rotspeed;		//Rotspeed proportional to frametime
 	t_data				*data;			//Struct for mlx parameters
 	t_key				*key;			//Struct for input status
+	t_tex				*tex;			//Struct for textures
 	int					texw;			//Width of textures
 	int					texh;			//Height of textures
 	int					buffer[480][640];	//Screen buffer[height][width]
