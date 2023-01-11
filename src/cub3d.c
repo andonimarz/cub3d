@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 15:04:48 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:57:31 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,12 @@ long	ft_get_time(void)
 	return (ms);
 }
 
-void	fill_control(t_control *control)
+void	init_control(t_control *control)
 {
-	int	i;
-
-	i = -1;
 	control->height = screenHeight;
 	control->width = screenWidth;
 	control->ceiling = 0x00ffff;
 	control->floor = 0x7a7a7a;
-	control->black = 0x000000;
-	control->white = 0xffffff;
-	control->green = 0x00ff00;
 	control->pos_x = 22;
 	control->pos_y = 11.5;
 	control->dir_x = -1;
@@ -54,14 +48,12 @@ void	fill_control(t_control *control)
 	control->frametime = 0;
 	control->texh = 64;
 	control->texw = 64;
-	while (++i < 4)
-		control->texture[i] = malloc(sizeof(int) * 64 * 64);
 }
 
 int	main(void)
 {
 	t_control	control;
 
-	fill_control(&control);
+	init_control(&control);
 	ft_mlx(&control);
 }

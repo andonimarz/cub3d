@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 15:37:37 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:00:30 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ typedef struct s_control
 	int					lineheight;		//The height of line to draw
 	int					drawstart;		//The lowest pixel to draw
 	int					drawend;		//The highest pixel to draw
-	double				frametime;
-	double				movespeed;
-	double				rotspeed;
-	t_data				*data;
-	t_key				*key;
-	int					texw;
-	int					texh;
-	int					buffer[480][640];
-	int					*texture[4];
-	int					*tex[4];
+	double				frametime;		//Time between frames
+	double				movespeed;		//Movespeed proportional to frametime
+	double				rotspeed;		//Rotspeed proportional to frametime
+	t_data				*data;			//Struct for mlx parameters
+	t_key				*key;			//Struct for input status
+	int					texw;			//Width of textures
+	int					texh;			//Height of textures
+	int					buffer[480][640];	//Screen buffer[height][width]
+	int					*texture[4];	//Addr of the 4 textures
+	void				*tex_ptr[4];	//Ptr of the 4 textures
 	int					tex_num;		//value of the current map square minus 1
 	double				wallx;			//exact value where the wall was hit
 	int					tex_x;			//x coordinate on the texture 
@@ -97,19 +97,22 @@ typedef struct s_control
 //cub3d.c
 
 long	ft_get_time(void);
+void	init_control(t_control *control);
 
 //hooks_and_loops.c
 
-void	ray_loop(t_control *ctr);
-int		hook_loop(t_control *ctr);
 int		key_press(int key, t_control *ctr);
 int		key_release(int key, t_control *ctr);
+void	calculate_frametime(t_control *ctr);
+void	ray_loop(t_control *ctr);
+int		hook_loop(t_control *ctr);
 
 //mlx_tools.c
 
 void	draw_tex_line(t_control *ctr, int x);
 void	mlx_place_pixel(t_data *data, int x, int y, int color);
 void	fill_background(t_control *control);
+void	init_key(t_key *key);
 void	ft_mlx(t_control *ctr);
 
 //moves.c
@@ -124,7 +127,6 @@ void	get_tex_num(t_control *ctr);
 void	get_tex_color(t_control *ctr);
 void	fill_buffer(t_control *ctr, int x);
 void	clear_buffer(t_control *ctr);
-void	calculate_frametime(t_control *ctr);
 
 //raycasting.c
 
@@ -137,5 +139,6 @@ void	calculate_dist_draw(t_control *ctr);
 //textures.c
 
 void	load_textures(t_control *ctr);
+// void	destroy_textures(t_control *ctr)
 
 #endif
