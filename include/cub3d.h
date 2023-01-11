@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 12:42:37 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:04:02 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_data
 	int			line_length;
 	int			bits_per_pixel;
 	int			endian;
-	//int			*tex[4];
 }				t_data;
 
 typedef struct s_key
@@ -42,7 +41,18 @@ typedef struct s_key
 
 typedef struct s_tex
 {
-
+	int					texw;			//Width of textures
+	int					texh;			//Height of textures
+	int					buffer[480][640];	//Screen buffer[height][width]
+	int					*texture[4];	//Addr of the 4 textures
+	void				*tex_ptr[4];	//Ptr of the 4 textures
+	int					tex_num;		//value of the current map square minus 1
+	double				wallx;			//exact value where the wall was hit
+	int					tex_x;			//x coordinate on the texture 
+	double				step;			//How much to increase the texture coordinate per screen pixel
+	double				tex_pos;		//Starting texture coordinate
+	int					tex_y;			//y coordinate on the texture
+	int					tex_color;
 }				t_tex;
 
 typedef struct s_control
@@ -82,18 +92,6 @@ typedef struct s_control
 	t_data				*data;			//Struct for mlx parameters
 	t_key				*key;			//Struct for input status
 	t_tex				*tex;			//Struct for textures
-	int					texw;			//Width of textures
-	int					texh;			//Height of textures
-	int					buffer[480][640];	//Screen buffer[height][width]
-	int					*texture[4];	//Addr of the 4 textures
-	void				*tex_ptr[4];	//Ptr of the 4 textures
-	int					tex_num;		//value of the current map square minus 1
-	double				wallx;			//exact value where the wall was hit
-	int					tex_x;			//x coordinate on the texture 
-	double				step;			// How much to increase the texture coordinate per screen pixel
-	double				tex_pos;		//Starting texture coordinate
-	int					tex_y;			//y coordinate on the texture
-	int					tex_color;
 }					t_control;
 
 //cub3d.c

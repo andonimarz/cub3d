@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:57:31 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:49:27 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	init_control(t_control *control)
 	control->time = ft_get_time();
 	control->old_time = 0;
 	control->frametime = 0;
-	control->texh = 64;
-	control->texw = 64;
+	/* control->texh = 64;
+	control->texw = 64; */
 }
 
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:45:11 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 11:52:57 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:58:05 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@
 void	load_textures(t_control *ctr)
 {
 	t_data	*data;
+	t_tex	*tex;
 
 	data = ctr->data;
-	ctr->tex_ptr[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/EA.xpm", \
-		&ctr->texw, &ctr->texh);
-	ctr->texture[0] = (int *)mlx_get_data_addr(ctr->tex_ptr[0], \
+	tex = ctr->tex;
+	tex->tex_ptr[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/EA.xpm", \
+		&tex->texw, &tex->texh);
+	tex->texture[0] = (int *)mlx_get_data_addr(tex->tex_ptr[0], \
 	&data->bits_per_pixel, &data->line_length, &data->endian);
-	ctr->tex_ptr[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/NO.xpm", \
-		&ctr->texw, &ctr->texh);
-	ctr->texture[1] = (int *)mlx_get_data_addr(ctr->tex_ptr[1], \
+	tex->tex_ptr[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/NO.xpm", \
+		&tex->texw, &tex->texh);
+	tex->texture[1] = (int *)mlx_get_data_addr(tex->tex_ptr[1], \
 	&data->bits_per_pixel, &data->line_length, &data->endian);
-	ctr->tex_ptr[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/SO.xpm", \
-		&ctr->texw, &ctr->texh);
-	ctr->texture[2] = (int *)mlx_get_data_addr(ctr->tex_ptr[2], \
+	tex->tex_ptr[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/SO.xpm", \
+		&tex->texw, &tex->texh);
+	tex->texture[2] = (int *)mlx_get_data_addr(tex->tex_ptr[2], \
 	&data->bits_per_pixel, &data->line_length, &data->endian);
-	ctr->tex_ptr[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/WE.xpm", \
-		&ctr->texw, &ctr->texh);
-	ctr->texture[3] = (int *)mlx_get_data_addr(ctr->tex_ptr[3], \
+	tex->tex_ptr[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/WE.xpm", \
+		&tex->texw, &tex->texh);
+	tex->texture[3] = (int *)mlx_get_data_addr(tex->tex_ptr[3], \
 	&data->bits_per_pixel, &data->line_length, &data->endian);
 }
 
@@ -45,7 +47,7 @@ void	load_textures(t_control *ctr)
 	i = 0;
 	while (i < 4)
 	{
-		mlx_destroy_image(ctr->data->mlx_ptr, ctr->tex_ptr[i]);
+		mlx_destroy_image(ctr->data->mlx_ptr, tex->tex_ptr[i]);
 		i++;
 	}
 } */
