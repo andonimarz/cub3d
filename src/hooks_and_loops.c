@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks and loops.c                                  :+:      :+:    :+:   */
+/*   hooks_and_loops.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:32:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 15:30:06 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:22:40 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	key_press(int key, t_control *ctr)
 {
 	if (key == ESC)
-		exit(0);
+		exit(0);	//FALTA FT_EXIT CON FREES Y DESTROY TEXTURES
 	if (key == 13)
 		ctr->key->w = 1;
 	if (key == 0)
@@ -36,7 +36,7 @@ int	key_press(int key, t_control *ctr)
 int	key_release(int key, t_control *ctr)
 {
 	if (key == ESC)
-		exit(0);
+		exit(0);	//FALTA FT_EXIT CON FREES Y DESTROY TEXTURES
 	if (key == 13)
 		ctr->key->w = 0;
 	if (key == 0)

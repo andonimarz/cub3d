@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 13:04:02 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:10:50 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,8 @@ typedef struct s_tex
 	int					tex_color;
 }				t_tex;
 
-typedef struct s_control
+typedef struct s_ray
 {
-	int					height;
-	int					width;
-	unsigned long		ceiling;
-	unsigned long		floor;
-	double				pos_x;			//Player start position
-	double				pos_y;			//Player start position
-	double				dir_x;			//Player direction
-	double				dir_y;			//Player direction
-	double				plane_x;		//Camera plane
-	double				plane_y;		//Camera plane
-	double				time;			//Actual time
-	double				old_time;		//Previous time
 	double				camera_x;		//x-coordinate in camera plane that the current x-coordinate of the screen represents
 	double				raydir_x;		//Direction of the ray
 	double				raydir_y;		//Direction of the ray
@@ -86,12 +74,29 @@ typedef struct s_control
 	int					lineheight;		//The height of line to draw
 	int					drawstart;		//The lowest pixel to draw
 	int					drawend;		//The highest pixel to draw
+}				t_ray;
+
+typedef struct s_control
+{
+	int					height;
+	int					width;
+	unsigned long		ceiling;
+	unsigned long		floor;
+	double				pos_x;			//Player start position
+	double				pos_y;			//Player start position
+	double				dir_x;			//Player direction
+	double				dir_y;			//Player direction
+	double				plane_x;		//Camera plane
+	double				plane_y;		//Camera plane
+	double				time;			//Actual time
+	double				old_time;		//Previous time
 	double				frametime;		//Time between frames
 	double				movespeed;		//Movespeed proportional to frametime
 	double				rotspeed;		//Rotspeed proportional to frametime
 	t_data				*data;			//Struct for mlx parameters
 	t_key				*key;			//Struct for input status
 	t_tex				*tex;			//Struct for textures
+	t_ray				*ray;			//Struct for raycasting
 }					t_control;
 
 //cub3d.c

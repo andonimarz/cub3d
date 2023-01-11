@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 12:54:51 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:11:52 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	draw_tex_line(t_control *ctr, int x)
 {
 	int	y;
 
-	y = ctr->drawstart;
-	while (y < ctr->drawend)
+	y = ctr->ray->drawstart;
+	while (y < ctr->ray->drawend)
 	{
 		mlx_place_pixel(ctr->data, x, y, ctr->tex->buffer[y][x]);
 		y++;
@@ -75,11 +75,13 @@ void	ft_mlx(t_control *ctr)
 	t_data	data;
 	t_key	key;
 	t_tex	tex;
+	t_ray	ray;
 
 	ctr->key = &key;
 	init_key(&key);
 	ctr->data = &data;
 	ctr->tex = &tex;
+	ctr->ray = &ray;
 	ctr->data->mlx_ptr = mlx_init();
 	ctr->data->mlx_win = mlx_new_window(ctr->data->mlx_ptr, \
 		ctr->width, ctr->height, "cub3d");

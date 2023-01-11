@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:41:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/10 15:29:39 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:16:57 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,82 +44,97 @@ int	worldMap[24][24]=
 
 void	init_pos_calculate_ray(int x, t_control *ctr)
 {
-	ctr->map_x = ctr->pos_x;
-	ctr->map_y = ctr->pos_y;
-	ctr->hit = 0;
-	ctr->camera_x = 2 * x / (double) ctr->width - 1;
-	ctr->raydir_x = ctr->dir_x + ctr->plane_x * ctr->camera_x;
-	ctr->raydir_y = ctr->dir_y + ctr->plane_y * ctr->camera_x;
+	t_ray	*ray;
+
+	ray = ctr->ray;
+	ray->map_x = ctr->pos_x;
+	ray->map_y = ctr->pos_y;
+	ray->hit = 0;
+	ray->camera_x = 2 * x / (double) ctr->width - 1;
+	ray->raydir_x = ctr->dir_x + ctr->plane_x * ray->camera_x;
+	ray->raydir_y = ctr->dir_y + ctr->plane_y * ray->camera_x;
 }
 
 void	get_deltadist(t_control *ctr)
 {
-	if (ctr->raydir_x == 0)
-		ctr->deltadist_x = 1e30;
+	t_ray	*ray;
+
+	ray = ctr->ray;
+	if (ray->raydir_x == 0)
+		ray->deltadist_x = 1e30;
 	else
-		ctr->deltadist_x = fabs(1 / ctr->raydir_x);
-	if (ctr->raydir_y == 0)
-		ctr->deltadist_y = 1e30;
+		ray->deltadist_x = fabs(1 / ray->raydir_x);
+	if (ray->raydir_y == 0)
+		ray->deltadist_y = 1e30;
 	else
-		ctr->deltadist_y = fabs(1 / ctr->raydir_y);
+		ray->deltadist_y = fabs(1 / ray->raydir_y);
 }
 
 void	get_step_sidedist(t_control *ctr)
 {
-	if (ctr->raydir_x < 0)
+	t_ray	*ray;
+
+	ray = ctr->ray;
+	if (ray->raydir_x < 0)
 	{
-		ctr->step_x = -1;
-		ctr->sidedist_x = (ctr->pos_x - ctr->map_x) * ctr->deltadist_x;
+		ray->step_x = -1;
+		ray->sidedist_x = (ctr->pos_x - ray->map_x) * ray->deltadist_x;
 	}
 	else
 	{
-		ctr->step_x = 1;
-		ctr->sidedist_x = (ctr->map_x + 1.0 - ctr->pos_x) * ctr->deltadist_x;
+		ray->step_x = 1;
+		ray->sidedist_x = (ray->map_x + 1.0 - ctr->pos_x) * ray->deltadist_x;
 	}
-	if (ctr->raydir_y < 0)
+	if (ray->raydir_y < 0)
 	{
-		ctr->step_y = -1;
-		ctr->sidedist_y = (ctr->pos_y - ctr->map_y) * ctr->deltadist_y;
+		ray->step_y = -1;
+		ray->sidedist_y = (ctr->pos_y - ray->map_y) * ray->deltadist_y;
 	}
 	else
 	{
-		ctr->step_y = 1;
-		ctr->sidedist_y = (ctr->map_y + 1.0 - ctr->pos_y) * ctr->deltadist_y;
+		ray->step_y = 1;
+		ray->sidedist_y = (ray->map_y + 1.0 - ctr->pos_y) * ray->deltadist_y;
 	}
 }
 
 void	dda_algorithm(t_control *ctr)
 {
-	while (ctr->hit == 0)
+	t_ray	*ray;
+
+	ray = ctr->ray;
+	while (ray->hit == 0)
 	{
-		if (ctr->sidedist_x < ctr->sidedist_y)
+		if (ray->sidedist_x < ray->sidedist_y)
 		{
-			ctr->sidedist_x += ctr->deltadist_x;
-			ctr->map_x += ctr->step_x;
-			ctr->side = 0;
+			ray->sidedist_x += ray->deltadist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
 		}
 		else
 		{
-			ctr->sidedist_y += ctr->deltadist_y;
-			ctr->map_y += ctr->step_y;
-			ctr->side = 1;
+			ray->sidedist_y += ray->deltadist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
 		}
-		if (worldMap[ctr->map_x][ctr->map_y] > 0)
-			ctr->hit = 1;
+		if (worldMap[ray->map_x][ray->map_y] > 0)
+			ray->hit = 1;
 	}
 }
 
 void	calculate_dist_draw(t_control *ctr)
 {
-	if (ctr->side == 0)
-		ctr->perpwalldist = (ctr->sidedist_x - ctr->deltadist_x);
+	t_ray	*ray;
+
+	ray = ctr->ray;
+	if (ray->side == 0)
+		ray->perpwalldist = (ray->sidedist_x - ray->deltadist_x);
 	else
-		ctr->perpwalldist = (ctr->sidedist_y - ctr->deltadist_y);
-	ctr->lineheight = ctr->height / ctr->perpwalldist;
-	ctr->drawstart = -ctr->lineheight / 2 + ctr->height / 2;
-	if (ctr->drawstart < 0)
-		ctr->drawstart = 0;
-	ctr->drawend = ctr->lineheight / 2 + ctr->height / 2;
-	if (ctr->drawend >= ctr->height)
-		ctr->drawend = ctr->height - 1;
+		ray->perpwalldist = (ray->sidedist_y - ray->deltadist_y);
+	ray->lineheight = ctr->height / ray->perpwalldist;
+	ray->drawstart = -ray->lineheight / 2 + ctr->height / 2;
+	if (ray->drawstart < 0)
+		ray->drawstart = 0;
+	ray->drawend = ray->lineheight / 2 + ctr->height / 2;
+	if (ray->drawend >= ctr->height)
+		ray->drawend = ctr->height - 1;
 }
