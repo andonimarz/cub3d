@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 13:44:48 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:37:34 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ typedef struct s_ray
 	int					drawend;		//The highest pixel to draw
 }				t_ray;
 
+typedef struct s_parse
+{
+	int					cei[3];
+	int					flo[3];
+	char				player;
+	char				**map;
+}				t_parse;
+
 typedef struct s_control
 {
 	int					height;
@@ -99,49 +107,53 @@ typedef struct s_control
 	t_key				*key;			//Struct for input status
 	t_tex				*tex;			//Struct for textures
 	t_ray				*ray;			//Struct for raycasting
+	t_parse				*parse;			//Mikel
 }					t_control;
 
 //cub3d.c
-long	ft_get_time(void);
+long			ft_get_time(void);
 
 //hooks_and_loops.c
-int		key_press(int key, t_control *ctr);
-int		key_release(int key, t_control *ctr);
-void	calculate_frametime(t_control *ctr);
-void	ray_loop(t_control *ctr);
-int		hook_loop(t_control *ctr);
+int				key_press(int key, t_control *ctr);
+int				key_release(int key, t_control *ctr);
+void			calculate_frametime(t_control *ctr);
+void			ray_loop(t_control *ctr);
+int				hook_loop(t_control *ctr);
 
 //mlx_tools.c
-void	draw_tex_line(t_control *ctr, int x);
-void	mlx_place_pixel(t_data *data, int x, int y, int color);
-void	fill_background(t_control *control);
-void	ft_mlx(t_control *ctr);
+void			draw_tex_line(t_control *ctr, int x);
+void			mlx_place_pixel(t_data *data, int x, int y, int color);
+void			fill_background(t_control *control);
+void			ft_mlx(t_control *ctr);
 
 //moves.c
-int		move_ws(t_control *ctr, int key);
-int		move_ad(t_control *ctr, int key);
-int		rotate_r(t_control *img);
-int		rotate_l(t_control *img);
+int				move_ws(t_control *ctr, int key);
+int				move_ad(t_control *ctr, int key);
+int				rotate_r(t_control *img);
+int				rotate_l(t_control *img);
 
 //raycasting_tex.c
-void	get_tex_num(t_control *ctr);
-void	get_tex_color(t_control *ctr);
-void	fill_buffer(t_control *ctr, int x);
-void	clear_buffer(t_control *ctr);
+void			get_tex_num(t_control *ctr);
+void			get_tex_color(t_control *ctr);
+void			fill_buffer(t_control *ctr, int x);
+void			clear_buffer(t_control *ctr);
 
 //raycasting.c
-void	init_pos_calculate_ray(int x, t_control *ctr);
-void	get_deltadist(t_control *ctr);
-void	get_step_sidedist(t_control *ctr);
-void	dda_algorithm(t_control *ctr);
-void	calculate_dist_draw(t_control *ctr);
+void			init_pos_calculate_ray(int x, t_control *ctr);
+void			get_deltadist(t_control *ctr);
+void			get_step_sidedist(t_control *ctr);
+void			dda_algorithm(t_control *ctr);
+void			calculate_dist_draw(t_control *ctr);
 
 //textures.c
-void	load_textures(t_control *ctr);
+void			load_textures(t_control *ctr);
 // void	destroy_textures(t_control *ctr)
 
 //utils.c
-void	init_control(t_control *control);
-void	init_key(t_key *key);
+void			get_orientation(t_control *ctr);
+void			init_parse(t_parse *parse);
+unsigned long	rgb_to_hex(int red, int green, int blue);
+void			init_control(t_control *control);
+void			init_key(t_key *key);
 
 #endif

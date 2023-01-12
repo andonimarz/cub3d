@@ -6,24 +6,68 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:24:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 13:43:15 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:35:43 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+void	get_orientation(t_control *ctr)
+{
+	ctr->dir_x = 0;
+	ctr->dir_y = 0;
+	ctr->plane_x = 0;
+	ctr->plane_y = 0;
+	if (ctr->parse->player == 'N')
+	{
+		ctr->dir_y = 1;
+		ctr->plane_x = 0.66;
+	}
+	if (ctr->parse->player == 'S')
+	{
+		ctr->dir_y = -1;
+		ctr->plane_x = -0.66;
+	}
+	if (ctr->parse->player == 'E')
+	{
+		ctr->dir_x = 1;
+		ctr->plane_y = -0.66;
+	}
+	if (ctr->parse->player == 'W')
+	{
+		ctr->dir_x = -1;
+		ctr->plane_y = 0.66;
+	}
+}
+
+void	init_parse(t_parse *parse)
+{
+	parse->cei[0] = 0;
+	parse->cei[1] = 153;
+	parse->cei[2] = 153;
+	parse->flo[0] = 96;
+	parse->flo[1] = 96;
+	parse->flo[2] = 96;
+	parse->player = 'E';
+}
+
+unsigned long	rgb_to_hex(int red, int green, int blue)
+{
+	return (((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff));
+}
+
 void	init_control(t_control *control)
 {
+	t_parse	*p;
+
+	p = control->parse;
 	control->height = SCREENHEIGHT;
 	control->width = SCREENWIDTH;
-	control->ceiling = 0x00ffff;
-	control->floor = 0x7a7a7a;
+	control->ceiling = rgb_to_hex(p->cei[0], p->cei[1], p->cei[2]);
+	control->floor = rgb_to_hex(p->flo[0], p->flo[1], p->flo[2]);
 	control->pos_x = 22;
 	control->pos_y = 11.5;
-	control->dir_x = -1;
-	control->dir_y = 0;
-	control->plane_x = 0;
-	control->plane_y = 0.66;
+	get_orientation(control);
 	control->time = ft_get_time();
 	control->old_time = 0;
 	control->frametime = 0;

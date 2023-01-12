@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 13:25:21 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:11:22 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ long	ft_get_time(void)
 int	main(void)
 {
 	t_control	control;
+	t_parse		parse;
 
+	init_parse(&parse);
+	control.parse = &parse;
 	init_control(&control);
 	ft_mlx(&control);
 }

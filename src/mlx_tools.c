@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 13:45:24 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:51:57 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../minilibx/mlx.h"
 #include <stdlib.h>
 
-extern int worldMap[24][24];
+extern char worldMap[24][24];
 
 void	draw_tex_line(t_control *ctr, int x)
 {
@@ -96,8 +96,3 @@ void	ft_mlx(t_control *ctr)
 	mlx_loop_hook(ctr->data->mlx_ptr, &hook_loop, ctr);
 	mlx_loop(ctr->data->mlx_ptr);
 }
-
-/* unsigned long	rgb_to_hex(int red, int green, int blue)
-{
-	return (((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff));
-} */
