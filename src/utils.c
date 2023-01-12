@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:24:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/12 10:35:43 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:57:59 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_parse(t_parse *parse)
 	parse->flo[0] = 96;
 	parse->flo[1] = 96;
 	parse->flo[2] = 96;
-	parse->player = 'E';
+	parse->player = 'W';
 }
 
 unsigned long	rgb_to_hex(int red, int green, int blue)

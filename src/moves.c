@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:06:11 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/12 11:53:18 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:07:55 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int	move_ws(t_control *ctr, int key)
 	if (key == 13)
 	{
 		if (worldMap[(int)(ctr->pos_x + ctr->dir_x * ctr->movespeed)] \
-		[(int)(ctr->pos_y)] - '0' == 0)
+		[(int)(ctr->pos_y)] != '1')
 			ctr->pos_x += ctr->dir_x * ctr->movespeed;
 		if (worldMap[(int)(ctr->pos_x)][(int)(ctr->pos_y + ctr->dir_y * \
-		ctr->movespeed)] - '0' == 0)
+		ctr->movespeed)] != '1')
 			ctr->pos_y += ctr->dir_y * ctr->movespeed;
 	}
 	else if (key == 1)
 	{
 		if (worldMap[(int)(ctr->pos_x - ctr->dir_x * ctr->movespeed)] \
-		[(int)(ctr->pos_y)] - '0' == 0)
+		[(int)(ctr->pos_y)] != '1')
 			ctr->pos_x -= ctr->dir_x * ctr->movespeed;
 		if (worldMap[(int)(ctr->pos_x)][(int)(ctr->pos_y - ctr->dir_y * \
-		ctr->movespeed)] - '0' == 0)
+		ctr->movespeed)] != '1')
 			ctr->pos_y -= ctr->dir_y * ctr->movespeed;
 	}
 	return (1);
@@ -43,19 +43,19 @@ int	move_ad(t_control *ctr, int key)
 	if (key == 2)
 	{
 		if (worldMap[(int)(ctr->pos_x + ctr->plane_x * ctr->movespeed)] \
-		[(int)(ctr->pos_y)] - '0' == 0)
+		[(int)(ctr->pos_y)] != '1')
 			ctr->pos_x += ctr->plane_x * ctr->movespeed;
 		if (worldMap[(int)(ctr->pos_x)][(int)(ctr->pos_y + ctr->plane_y * \
-		ctr->movespeed)] - '0' == 0)
+		ctr->movespeed)] != '1')
 			ctr->pos_y += ctr->plane_y * ctr->movespeed;
 	}
 	else if (key == 0)
 	{
 		if (worldMap[(int)(ctr->pos_x - ctr->plane_x * ctr->movespeed)] \
-		[(int)(ctr->pos_y)] - '0' == 0)
+		[(int)(ctr->pos_y)] != '1')
 			ctr->pos_x -= ctr->plane_x * ctr->movespeed;
 		if (worldMap[(int)(ctr->pos_x)][(int)(ctr->pos_y - ctr->plane_y * \
-		ctr->movespeed)] - '0' == 0)
+		ctr->movespeed)] != '1')
 			ctr->pos_y -= ctr->plane_y * ctr->movespeed;
 	}
 	return (1);
