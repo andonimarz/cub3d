@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:45:11 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 13:11:28 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:47:06 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	load_textures(t_control *ctr)
 	&data->bits_per_pixel, &data->line_length, &data->endian);
 }
 
-/* void	destroy_textures(t_control *ctr)
+void	destroy_textures(t_control *ctr)
 {
 	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		mlx_destroy_image(ctr->data->mlx_ptr, tex->tex_ptr[i]);
+		mlx_destroy_image(ctr->data->mlx_ptr, ctr->tex->tex_ptr[i]);
 		i++;
 	}
-} */
+}

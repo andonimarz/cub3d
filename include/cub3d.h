@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 11:37:34 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:00:05 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,22 @@ typedef struct s_control
 //cub3d.c
 long			ft_get_time(void);
 
-//hooks_and_loops.c
+//hooks.c
 int				key_press(int key, t_control *ctr);
 int				key_release(int key, t_control *ctr);
+int				exit_mlx(t_control *ctr);
+
+//loops.c
 void			calculate_frametime(t_control *ctr);
 void			ray_loop(t_control *ctr);
 int				hook_loop(t_control *ctr);
+void			mlx_main_loop(t_control *ctr);
 
-//mlx_tools.c
+//mlx_utils.c
 void			draw_tex_line(t_control *ctr, int x);
 void			mlx_place_pixel(t_data *data, int x, int y, int color);
 void			fill_background(t_control *control);
-void			ft_mlx(t_control *ctr);
+void			init_screen(t_control *ctr);
 
 //moves.c
 int				move_ws(t_control *ctr, int key);
@@ -147,7 +151,7 @@ void			calculate_dist_draw(t_control *ctr);
 
 //textures.c
 void			load_textures(t_control *ctr);
-// void	destroy_textures(t_control *ctr)
+void			destroy_textures(t_control *ctr);
 
 //utils.c
 void			get_orientation(t_control *ctr);

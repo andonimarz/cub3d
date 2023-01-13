@@ -6,17 +6,18 @@
 #    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/11 13:28:18 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/13 08:54:51 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 SRC = 	src/cub3d.c 					\
-		src/mlx_tools.c 				\
-		src/raycasting.c 				\
-		src/raycasting_tex.c			\
+		src/hooks.c						\
+		src/loops.c						\
+		src/mlx_utils.c 				\
 		src/moves.c						\
-		src/hooks_and_loops.c			\
+		src/raycasting_tex.c			\
+		src/raycasting.c 				\
 		src/textures.c					\
 		src/utils.c
 

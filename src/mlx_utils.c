@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_tools.c                                        :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/12 11:51:57 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:55:09 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,4 @@ void	init_screen(t_control *ctr)
 	ray_loop(ctr);
 	mlx_put_image_to_window(ctr->data->mlx_ptr, ctr->data->mlx_win, \
 		ctr->data->img, 0, 0);
-}
-
-void	ft_mlx(t_control *ctr)
-{
-	t_data	data;
-	t_key	key;
-	t_tex	tex;
-	t_ray	ray;
-
-	ctr->key = &key;
-	init_key(&key);
-	ctr->data = &data;
-	ctr->tex = &tex;
-	ctr->ray = &ray;
-	ctr->data->mlx_ptr = mlx_init();
-	init_screen(ctr);
-	mlx_hook(ctr->data->mlx_win, KEY_PRESS, 0, &key_press, ctr);
-	mlx_hook(ctr->data->mlx_win, KEY_RELEASE, 0, &key_release, ctr);
-	mlx_hook(ctr->data->mlx_win, EXIT, 0, (void *)exit, 0);
-	mlx_loop_hook(ctr->data->mlx_ptr, &hook_loop, ctr);
-	mlx_loop(ctr->data->mlx_ptr);
 }

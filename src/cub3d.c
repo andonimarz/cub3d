@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 10:11:22 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:42:23 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int	main(void)
 	init_parse(&parse);
 	control.parse = &parse;
 	init_control(&control);
-	ft_mlx(&control);
+	mlx_main_loop(&control);
 }
