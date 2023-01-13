@@ -6,20 +6,31 @@
 #    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/13 11:20:12 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/13 12:26:17 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-SRC = 	src/cub3d.c 					\
+SRC = 	src/checkers.c					\
+		src/color_errors.c				\
+		src/cub3d.c 					\
+		src/error.c						\
+		src/file_tools.c				\
+		src/get_next_line.c				\
 		src/hooks.c						\
+		src/init_free.c					\
 		src/loops.c						\
 		src/map_tools.c					\
 		src/mlx_utils.c 				\
 		src/moves.c						\
+		src/parse_file.c				\
+		src/parse_map.c					\
 		src/raycasting_tex.c			\
 		src/raycasting.c 				\
+		src/state.c						\
+		src/str_tools.c					\
 		src/textures.c					\
+		src/txt_color_errors.c			\
 		src/utils.c						\
 
 CC = gcc

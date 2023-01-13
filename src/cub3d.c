@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 08:42:23 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:24:34 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #include "libft.h"
 #include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
+#include "state.h"
+#include "free_error.h"
+#include "file.h"
 #include <sys/time.h>
+
 
 long	ft_get_time(void)
 {
@@ -26,13 +30,20 @@ long	ft_get_time(void)
 	return (ms);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_control	control;
 	t_parse		parse;
+	t_state		state;
 
+	if (!init_state(&state))
+		return (exit_with_error(&state, "Error initializing"));
+	if (arg_checker(ac, av))
+		return (1);
+	parse_file(av[1], &state);
 	init_parse(&parse);
 	control.parse = &parse;
 	init_control(&control);
 	mlx_main_loop(&control);
+	exit_without_error(&state);
 }
