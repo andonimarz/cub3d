@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 09:17:47 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:34:48 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct s_parse
 	int					cei[3];
 	int					flo[3];
 	char				player;
+	double				pos_x;
+	double				pos_y;
 	char				**map;
 }				t_parse;
 
@@ -117,6 +119,9 @@ long			ft_get_time(void);
 int				key_press(int key, t_control *ctr);
 int				key_release(int key, t_control *ctr);
 int				exit_mlx(t_control *ctr);
+
+//map_tools.c
+char			map_player(t_parse *parse);
 
 //loops.c
 void			calculate_frametime(t_control *ctr);
