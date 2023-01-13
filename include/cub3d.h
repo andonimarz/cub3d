@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 09:00:05 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:17:47 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,8 @@ int				hook_loop(t_control *ctr);
 void			mlx_main_loop(t_control *ctr);
 
 //mlx_utils.c
-void			draw_tex_line(t_control *ctr, int x);
 void			mlx_place_pixel(t_data *data, int x, int y, int color);
+void			draw_tex_line(t_control *ctr, int x);
 void			fill_background(t_control *control);
 void			init_screen(t_control *ctr);
 

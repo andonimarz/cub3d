@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/13 08:55:09 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:17:33 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 #include <stdlib.h>
 
 extern char worldMap[24][24];
+
+void	mlx_place_pixel(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->img_addr + (y * data->line_length + x * \
+				(data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 void	draw_tex_line(t_control *ctr, int x)
 {
@@ -26,15 +35,6 @@ void	draw_tex_line(t_control *ctr, int x)
 		mlx_place_pixel(ctr->data, x, y, ctr->tex->buffer[y][x]);
 		y++;
 	}
-}
-
-void	mlx_place_pixel(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->img_addr + (y * data->line_length + x * \
-				(data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
 }
 
 void	fill_background(t_control *control)
