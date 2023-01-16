@@ -6,15 +6,13 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:50:50 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/13 09:17:33 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:48:46 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
 #include <stdlib.h>
-
-extern char worldMap[24][24];
 
 void	mlx_place_pixel(t_data *data, int x, int y, int color)
 {

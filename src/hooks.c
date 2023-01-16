@@ -6,15 +6,14 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:32:04 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/13 08:57:31 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:56:07 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../minilibx/mlx.h"
+#include "free_error.h"
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	key_press(int key, t_control *ctr)
 {
@@ -54,9 +53,7 @@ int	key_release(int key, t_control *ctr)
 
 int	exit_mlx(t_control *ctr)
 {
-	(void)ctr;
-	printf("gg\n");
 	destroy_textures(ctr);
-	exit (0);
+	exit_without_error(ctr->state);
 	return (0);
 }

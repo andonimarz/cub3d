@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:19:33 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/11 13:18:24 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:44:00 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	get_tex_num(t_control *ctr)
 		if (ctr->ray->raydir_x >= 0)
 			ctr->tex->tex_num = 0;
 		else
-			ctr->tex->tex_num = 1;
+			ctr->tex->tex_num = 3;
 	}
 	else
 	{
 		if (ctr->ray->raydir_y >= 0)
 			ctr->tex->tex_num = 2;
 		else
-			ctr->tex->tex_num = 3;
+			ctr->tex->tex_num = 1;
 	}
 }
 
@@ -44,10 +44,6 @@ void	get_tex_color(t_control *ctr)
 		tex->wallx = ctr->pos_x + ray->perpwalldist * ray->raydir_x;
 	tex->wallx -= floor(tex->wallx);
 	tex->tex_x = (int)(tex->wallx * (double)ctr->tex->texw);
-	if (ray->side == 0 && ray->raydir_x > 0)
-		tex->tex_x = tex->texw - tex->tex_x - 1;
-	if (ray->side == 1 && ray->raydir_x < 0)
-		tex->tex_x = tex->texw - tex->tex_x - 1;
 	tex->step = 1.0 * tex->texh / ray->lineheight;
 	tex->tex_pos = (ray->drawstart - ctr->height / 2 + ray->lineheight / 2) \
 		* tex->step;
@@ -68,7 +64,7 @@ void	fill_buffer(t_control *ctr, int x)
 		tex->tex_pos += tex->step;
 		tex->tex_color = tex->texture[tex->tex_num][ctr->tex->texh * \
 			tex->tex_y + tex->tex_x];
-		if (ray->side == 1)
+		if (ray->side == 0)
 			tex->tex_color = (tex->tex_color >> 1) & 8355711;
 		ctr->tex->buffer[y][x] = tex->tex_color;
 		y++;

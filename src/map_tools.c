@@ -6,39 +6,35 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:02:05 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/13 12:13:31 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:48:39 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-#include <stdio.h>
 
-extern char worldMap[24][24];
-
-char	map_player(t_parse	*parse)
+char	map_player(t_control *ctr)
 {
+	char	**map;
 	int		y;
 	int		x;
 	char	c;
 
-	y = 0;
-	while (y < 24)
+	map = ctr->state->only_map;
+	c = '\0';
+	y = -1;
+	while (map[++y])
 	{
-		x = 0;
-		while (x < 24)
+		x = -1;
+		while (map[y][++x])
 		{
-			if (worldMap[y][x] == 'N' || worldMap[y][x] == 'W' \
-				|| worldMap[y][x] == 'S' || worldMap[y][x] == 'E')
+			if (map[y][x] == 'N' || map[y][x] == 'W' \
+				|| map[y][x] == 'S' || map[y][x] == 'E')
 			{
-				c = worldMap[y][x];
-				printf("%c\n", c);
-				parse->pos_x = 24 - x + 0.5;
-				parse->pos_y = 24 - y - 0.5;
-				break ;
+				c = map[y][x];
+				ctr->pos_x = x + 0.5;
+				ctr->pos_y = y + 0.5;
 			}
-			x++;
 		}
-		y++;
 	}
 	return (c);
 }
