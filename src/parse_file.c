@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 11:59:41 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:36:21 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	parse_file(char *av, t_state *state)
 	my_map = copy_map(state, &file, av);
 	txt_color_errors(state, &file, my_map);
 	parse_map(state, &file, my_map);
+	map_errors(state);
 	free_array(my_map);
 	return (0);
 }

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_tools.h                                        :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:07:19 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/16 11:55:24 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/16 09:56:33 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/16 10:18:32 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_TOOLS_H
-# define STR_TOOLS_H
+#include<stdio.h>
 
-int		skip(char *str, int start);
-int		skip_last_spaces(char *str);
-int		find_space(char *str);
-char	*check_last_line(char *str, char **my_map,
-			t_state *state, t_file *file);
-int		get_array_size(char **array);
-
-#endif
+int	ft_is_space(int c)
+{
+	if (c == ' ' || c == '\r' || c == '\t'
+		|| c == '\v' || c == '\f' || c == '\n')
+		return (1);
+	return (0);
+}
