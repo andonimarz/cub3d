@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:36:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/17 13:39:26 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:37:28 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	check_map_limit_rev(char **my_map, t_coher *c, int i)
 	}
 	if (c->player == 0)
 		c->error = 5;
+	if (c->player > 1)
+		c->error = 6;
 }
 
 void	check_map_limit(char **my_map, t_coher *c)

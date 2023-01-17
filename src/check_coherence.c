@@ -6,14 +6,13 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:39:21 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/17 13:37:19 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:36:10 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/free_error.h"
 #include "../include/cub3d.h"
 #include "libft.h"
-#include <stdio.h>
 #include <fcntl.h>
 
 static int	check_duplicates(char **my_map, char *str, int line, t_coher *c)
@@ -99,4 +98,6 @@ void	check_coherence(t_state *state, char **my_map)
 		exit_with_error(state, "ERROR: WRONG MAP FORMAT");
 	else if (c.error == 5)
 		exit_with_error(state, "ERROR: NO PLAYER IN MAP");
+	else if (c.error == 6)
+		exit_with_error(state, "ERROR: TOO MUCH PLAYERS IN MAP");
 }

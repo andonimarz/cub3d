@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:37:24 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/17 10:24:57 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:38:09 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,6 @@ static int	check_zero(char **map, int i, int j)
 	return (1);
 }
 
-static int	check_player(char **only_map, int x, int y)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (only_map[++i])
-	{
-		j = -1;
-		while (only_map[i][++j])
-		{
-			if ((only_map[i][j] == 'N' || only_map[i][j] == 'S'
-				|| only_map[i][j] == 'W' || only_map[i][j] == 'E')
-				&& i != x && j != y)
-				return (0);
-		}
-	}
-	return (1);
-}
-
 static int	char_checker(char **only_map)
 {
 	int	i;
@@ -117,10 +97,6 @@ static int	char_checker(char **only_map)
 				return (0);
 			if (only_map[i][j] == '0')
 				if (!check_zero(only_map, i, j))
-					return (0);
-			if (only_map[i][j] == 'N' || only_map[i][j] == 'S'
-				|| only_map[i][j] == 'W' || only_map[i][j] == 'E')
-				if (!check_player(only_map, i, j))
 					return (0);
 		}
 	}
