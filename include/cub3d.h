@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/16 13:19:30 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:38:39 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,11 +144,27 @@ typedef struct s_control
 	t_state				*state;			//Mikel
 }					t_control;
 
+typedef struct s_coher
+{
+	int					error;
+	int					map_start;
+	int					prev_len;
+	int					items;
+	int					player;
+}					t_coher;
+
 int				arg_checker(int ac, char **av);
 char			*get_next_line(int fd);
 void			init_txt_color(t_txt *txt, t_color *color);
 int				assign_colors(t_color *color, t_file *file, char *line, int i);
 int				parse_map(t_state *state, t_file *file, char **my_map);
+
+//check_coherence.c
+void			check_coherence(t_state *state, char **my_map);
+
+//check_coherence2.c
+void			check_map_limit_rev(char **my_map, t_coher *c, int i);
+void			check_map_limit(char **my_map, t_coher *c);
 
 //cub3d.c
 long			ft_get_time(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:32:44 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/16 13:24:12 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:49:49 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	check_nbrs(char **digits)
 		j = 0;
 		while (digits[i][j])
 		{
-			if (digits[i][j] < '0' || digits[i][j] > '9')
+			if (!((digits[i][j] >= '0' && digits[i][j] <= '9') ||
+			digits[i][j] == ' '))
 				return (0);
 			j++;
 		}

@@ -1,17 +1,19 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_long                                      :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
+#    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/13 12:37:03 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2023/01/17 13:39:01 by amarzana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 SRC = 	src/checkers.c					\
+		src/check_coherence.c			\
+		src/check_coherence2.c			\
 		src/color_errors.c				\
 		src/cub3d.c 					\
 		src/error.c						\

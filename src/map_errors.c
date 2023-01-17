@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:37:24 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/16 13:32:33 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:24:57 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include"libft.h"
 #include"str_tools.h"
 #include"free_error.h"
-#include<stdio.h>
 
 static int	check_walls(char *str)
 {
@@ -80,16 +79,36 @@ static int	check_zero(char **map, int i, int j)
 	return (1);
 }
 
+static int	check_player(char **only_map, int x, int y)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (only_map[++i])
+	{
+		j = -1;
+		while (only_map[i][++j])
+		{
+			if ((only_map[i][j] == 'N' || only_map[i][j] == 'S'
+				|| only_map[i][j] == 'W' || only_map[i][j] == 'E')
+				&& i != x && j != y)
+				return (0);
+		}
+	}
+	return (1);
+}
+
 static int	char_checker(char **only_map)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (only_map[i])
+	i = -1;
+	while (only_map[++i])
 	{
-		j = 0;
-		while (only_map[i][j])
+		j = -1;
+		while (only_map[i][++j])
 		{
 			if (only_map[i][j] != '1' && only_map[i][j] != '0'
 				&& only_map[i][j] != 'N' && only_map[i][j] != 'S'
@@ -97,13 +116,13 @@ static int	char_checker(char **only_map)
 				&& only_map[i][j] != '\0' && !ft_is_space(only_map[i][j]))
 				return (0);
 			if (only_map[i][j] == '0')
-			{
 				if (!check_zero(only_map, i, j))
 					return (0);
-			}
-			j++;
+			if (only_map[i][j] == 'N' || only_map[i][j] == 'S'
+				|| only_map[i][j] == 'W' || only_map[i][j] == 'E')
+				if (!check_player(only_map, i, j))
+					return (0);
 		}
-		i++;
 	}
 	return (1);
 }
