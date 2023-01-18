@@ -6,12 +6,13 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:39:21 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/17 14:36:10 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:31:20 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/free_error.h"
-#include "../include/cub3d.h"
+#include "free_error.h"
+#include "checkers.h"
+#include "cub3d.h"
 #include "libft.h"
 #include <fcntl.h>
 
@@ -91,7 +92,7 @@ void	check_coherence(t_state *state, char **my_map)
 	if (c.error == 1)
 		exit_with_error(state, "ERROR: DUPLICATED PARAMETER");
 	else if (c.error == 2)
-		exit_with_error(state, "ERROR: MAP BEFORE PARAMS");
+		exit_with_error(state, "ERROR: MISSING PARAMETER BEFORE MAP");
 	else if (c.error == 3)
 		exit_with_error(state, "ERROR: WRONG PARAMETERS");
 	else if (c.error == 4)
@@ -99,5 +100,5 @@ void	check_coherence(t_state *state, char **my_map)
 	else if (c.error == 5)
 		exit_with_error(state, "ERROR: NO PLAYER IN MAP");
 	else if (c.error == 6)
-		exit_with_error(state, "ERROR: TOO MUCH PLAYERS IN MAP");
+		exit_with_error(state, "ERROR: TOO MANY PLAYERS IN MAP");
 }

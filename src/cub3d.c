@@ -6,14 +6,15 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/16 12:46:55 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:32:16 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
-#include "../include/cub3d.h"
+#include "cub3d.h"
 #include "../minilibx/mlx.h"
+#include "checkers.h"
 #include "state.h"
 #include "free_error.h"
 #include "file.h"

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
+#    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/17 13:39:01 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/18 10:19:32 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = 	src/checkers.c					\
 
 CC = gcc
 INCLUDES = -I include -I libft -I minilibx/mlx.h
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES) #-fsanitize=address
 LINKS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 
 .SILENT:

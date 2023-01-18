@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:43:14 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 10:16:01 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:20:38 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	exit_with_error(t_state *state, char *str)
 
 int	exit_without_error(t_state *state)
 {
-	printf("TODO OK\n");
 	free_state(state);
 	exit(0);
 	return (0);

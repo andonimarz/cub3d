@@ -1,7 +1,7 @@
 NO ./img/colorstone.xpm
 EA ./img/greystone.xpm
 WE ./img/mossy.xpm
-SO ./img/bluestone.png
+SO ./img/bluestone.xpm
 
 F 20,30,250
 C 225,30,0

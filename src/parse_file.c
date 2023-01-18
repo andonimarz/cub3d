@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/17 10:38:43 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:32:39 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "free_error.h"
 #include "file.h"
 #include "str_tools.h"
+#include "checkers.h"
 #include <fcntl.h>
 
 static void	get_size(char *av, t_file *file)
@@ -80,7 +81,7 @@ int	parse_file(char *av, t_state *state)
 	check_coherence(state, my_map);
 	txt_color_errors(state, &file, my_map);
 	parse_map(state, &file, my_map);
-	map_errors(state);
 	free_array(my_map);
+	map_errors(state);
 	return (0);
 }
